@@ -105,7 +105,15 @@ function AppContent() {
       setSavedRoundId(id);
       setSavedRounds(loadSavedRounds());
       return true;
-    } catch {
+    } catch (err) {
+      const quotaExceeded =
+        err instanceof DOMException &&
+        (err.name === 'QuotaExceededError' || err.name === 'NS_ERROR_DOM_QUOTA_REACHED');
+      alert(
+        quotaExceeded
+          ? '保存容量の上限に達したため保存できませんでした。写真の枚数を減らすか、「保存済みラウンド」から不要なデータを削除してください。'
+          : '保存に失敗しました。しばらくしてからもう一度お試しください。'
+      );
       return false;
     }
   };
