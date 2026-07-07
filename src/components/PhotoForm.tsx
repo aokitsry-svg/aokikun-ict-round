@@ -20,7 +20,7 @@ export default function PhotoForm({ linkedItemId, categories, onAdd, onCancel }:
 
   const linkedItem = linkedItemId ? findItemById(categories, linkedItemId) : undefined;
 
-  async function compressImage(file: File, maxWidth = 1200, quality = 0.8): Promise<{ dataUrl: string; width: number; height: number }> {
+  async function compressImage(file: File, maxWidth = 640, quality = 0.8): Promise<{ dataUrl: string; width: number; height: number }> {
     // imageOrientation: 'from-image' で EXIF の回転をピクセルへ反映する
     // （スマホ縦撮影の写真が90度回転する問題への対処）
     const bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' });
