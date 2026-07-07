@@ -126,3 +126,8 @@ npm run dev
 - [docs/technical-spec.md](docs/technical-spec.md)
 - `docs/reference/round-checklist.xlsx`
 - `docs/assets/distribution-qr.png`
+
+## ライセンス
+
+本ソフトウェアは [Apache License 2.0](LICENSE) のもとで公開されています。
+複製・改変・再配布・商用利用が可能です。詳細は [LICENSE](LICENSE) および [NOTICE](NOTICE) を参照してください。

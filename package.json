@@ -1,6 +1,7 @@
 {
   "name": "icn-round-app",
   "private": true,
+  "license": "Apache-2.0",
   "version": "1.7.7",
   "type": "module",
   "scripts": {
