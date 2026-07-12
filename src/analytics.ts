@@ -21,6 +21,7 @@ export function initAnalytics(): void {
 
   window.dataLayer = window.dataLayer ?? [];
   window.gtag = function () {
+    // eslint-disable-next-line prefer-rest-params -- gtag.jsは配列でなくargumentsオブジェクトを要求する
     window.dataLayer.push(arguments);
   };
   window.gtag('js', new Date());
