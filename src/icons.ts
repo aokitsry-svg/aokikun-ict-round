@@ -32,7 +32,7 @@ export function loadIcon(): IconName {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved && saved in icons) return saved as IconName;
   } catch { /* ignore */ }
-  return 'ran';
+  return 'meguru';
 }
 
 export function saveIcon(name: IconName) {

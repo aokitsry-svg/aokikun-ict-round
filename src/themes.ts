@@ -55,7 +55,7 @@ export function loadTheme(): ThemeName {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved && saved in themes) return saved as ThemeName;
   } catch { /* ignore */ }
-  return 'warm';
+  return 'medical';
 }
 
 export function saveTheme(name: ThemeName) {
