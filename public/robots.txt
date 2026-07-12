@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ict-round.conect.llc/sitemap.xml
