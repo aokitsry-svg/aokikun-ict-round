@@ -111,7 +111,9 @@ npm run dev
 - 写真は 10MB 以下の画像ファイルのみ取り込み可能です
 - 画像はブラウザ内で JPEG に圧縮し、データ URL として保持します
 - 音声入力は `SpeechRecognition` / `webkitSpeechRecognition` 対応ブラウザでのみ利用できます
-- Service Worker は `index.html` から登録され、アプリシェルと Google Fonts をキャッシュします
+- Service Worker は **本番でのみ** `index.html` から登録され、アプリシェルと Google Fonts をキャッシュします
+- 開発時（`localhost` / `127.0.0.1`）は Service Worker を登録しません。過去に登録された SW が別プロジェクトや別ポートのキャッシュと混線し、古い画面や意図しないアプリが表示されるのを防ぐため、既存の登録があれば自動で解除します
+- `npm run dev` では紹介ページ `/about/` は SPA フォールバックでアプリ本体が返るため、開発中にランディングを確認するときは `/about/index.html` を開くか、`npm run build && npm run preview`（`/about/` で正しく表示）を使います
 - Vite の `base` は `./` に設定されています
 
 ## 推奨利用環境
