@@ -20,36 +20,47 @@
     <script type="module" src="/src/main.tsx"></script>
     <script>
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          let isReloading = false;
-          const reloadPage = () => {
-            if (isReloading) return;
-            isReloading = true;
-            window.location.reload();
-          };
-
+        const isLocalhost = ['localhost', '127.0.0.1', '[::1]'].includes(
+          location.hostname
+        );
+        // 開発時(localhost)はSWを登録しない。過去に登録された古いSWが残っていると
+        // 別プロジェクト/別ポートと混線するため、既存の登録があれば自己解除する。
+        if (isLocalhost) {
           navigator.serviceWorker
-            .register('./sw.js')
-            .then((registration) => {
-              registration.onupdatefound = () => {
-                const newWorker = registration.installing;
-                if (!newWorker) return;
+            .getRegistrations()
+            .then((regs) => regs.forEach((reg) => reg.unregister()));
+        } else {
+          window.addEventListener('load', () => {
+            let isReloading = false;
+            const reloadPage = () => {
+              if (isReloading) return;
+              isReloading = true;
+              window.location.reload();
+            };
 
-                newWorker.addEventListener('statechange', () => {
-                  if (
-                    newWorker.state === 'installed' &&
-                    navigator.serviceWorker.controller
-                  ) {
-                    reloadPage();
-                  }
-                });
-              };
+            navigator.serviceWorker
+              .register('./sw.js')
+              .then((registration) => {
+                registration.onupdatefound = () => {
+                  const newWorker = registration.installing;
+                  if (!newWorker) return;
+
+                  newWorker.addEventListener('statechange', () => {
+                    if (
+                      newWorker.state === 'installed' &&
+                      navigator.serviceWorker.controller
+                    ) {
+                      reloadPage();
+                    }
+                  });
+                };
+              });
+
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+              reloadPage();
             });
-
-          navigator.serviceWorker.addEventListener('controllerchange', () => {
-            reloadPage();
           });
-        });
+        }
       }
     </script>
   </body>
