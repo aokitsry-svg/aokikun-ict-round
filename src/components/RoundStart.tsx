@@ -3,6 +3,7 @@ import { useTheme } from '../ThemeContext';
 import { useIcon } from '../IconContext';
 import ThemeSelector from './ThemeSelector';
 import ChecklistImportDialog from './ChecklistImportDialog';
+import InstallBanner from './InstallBanner';
 import type { SavedChecklist } from '../types';
 
 interface Props {
@@ -182,6 +183,8 @@ export default function RoundStart({
             )}
           </button>
         </form>
+
+        <InstallBanner />
 
         <p className="text-center text-text-faint text-xs mt-10">ICTラウンドアプリ「{icon.label}」 v{__APP_VERSION__} (build {__BUILD_DATE__})</p>
       </div>
