@@ -220,6 +220,15 @@
     </div>
   </section>
 
+  <!-- 最新のアップデート -->
+  <section class="py-14 px-6 max-w-2xl mx-auto">
+    <h2 class="text-2xl font-black text-center text-gray-900 mb-8">最新のアップデート</h2>
+    <div id="release-list" class="flex flex-col gap-4"></div>
+    <p class="text-center mt-6">
+      <a href="../updates/" class="text-blue-600 font-bold hover:underline text-sm">更新履歴をすべて見る →</a>
+    </p>
+  </section>
+
   <!-- 開発者 -->
   <section class="bg-white border-t border-b border-gray-100 py-12 px-6">
     <div class="max-w-3xl mx-auto flex flex-col gap-8">
@@ -308,6 +317,33 @@
       <a href="https://github.com/yukihiroyamaguchi569/ict-round" class="underline hover:text-white" target="_blank">GitHub</a>
     </p>
   </section>
+
+  <script>
+    const escapeHTML = (str) => str.replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
+
+    fetch('/updates/releases.json')
+      .then((res) => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
+      .then((releases) => {
+        const list = document.getElementById('release-list');
+        list.innerHTML = releases.slice(0, 3).map((release) => `
+          <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="badge bg-blue-50 text-blue-700 border border-blue-200">v${escapeHTML(release.version)}</span>
+              <span class="text-gray-400 text-xs">${escapeHTML(release.date)}</span>
+            </div>
+            <ul class="list-disc list-inside text-sm text-gray-700 flex flex-col gap-1">
+              ${release.changes.map((change) => `<li>${escapeHTML(change)}</li>`).join('')}
+            </ul>
+          </div>
+        `).join('');
+      })
+      .catch((error) => {
+        console.error('Failed to load latest releases:', error);
+      });
+  </script>
 
 </body>
 </html>
