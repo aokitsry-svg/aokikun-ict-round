@@ -37,21 +37,30 @@
   </section>
 
   <script>
-    fetch('./releases.json')
-      .then((res) => res.json())
+    const escapeHTML = (str) => str.replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
+
+    fetch('/updates/releases.json')
+      .then((res) => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
       .then((releases) => {
         const list = document.getElementById('release-list');
         list.innerHTML = releases.map((release) => `
           <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
             <div class="flex items-center gap-3 mb-3">
-              <span class="badge bg-blue-50 text-blue-700 border border-blue-200">v${release.version}</span>
-              <span class="text-gray-400 text-xs">${release.date}</span>
+              <span class="badge bg-blue-50 text-blue-700 border border-blue-200">v${escapeHTML(release.version)}</span>
+              <span class="text-gray-400 text-xs">${escapeHTML(release.date)}</span>
             </div>
             <ul class="list-disc list-inside text-sm text-gray-700 flex flex-col gap-1">
-              ${release.changes.map((change) => `<li>${change}</li>`).join('')}
+              ${release.changes.map((change) => `<li>${escapeHTML(change)}</li>`).join('')}
             </ul>
           </div>
         `).join('');
+      })
+      .catch((error) => {
+        console.error('Failed to load releases:', error);
+        document.getElementById('release-list').innerHTML = '<p class="text-gray-500">アップデート情報の読み込みに失敗しました。</p>';
       });
   </script>
 
