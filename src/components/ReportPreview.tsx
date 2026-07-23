@@ -80,7 +80,7 @@ export default function ReportPreview({ roundData, categories, onBack }: Props) 
       heading: HeadingLevel.HEADING_1,
       alignment: AlignmentType.CENTER,
       spacing: { after: 160 },
-      children: [new TextRun({ text: '感染対策ラウンド報告書', bold: true, size: 32, color: clr.text })],
+      children: [new TextRun({ text: 'あおき君 感染対策ラウンド報告書', bold: true, size: 32, color: clr.text })],
     }));
 
     children.push(new Paragraph({
@@ -267,7 +267,7 @@ export default function ReportPreview({ roundData, categories, onBack }: Props) 
     return Packer.toBlob(doc);
   };
 
-  const filename = `ICTround_${new Date().toISOString().slice(0, 10)}.docx`;
+  const filename = `aokikun_round_${new Date().toISOString().slice(0, 10)}.docx`;
 
   // プレビュー表示時に docx を事前生成して File をキャッシュしておく。
   // roundData / categories はこの画面の表示中に変化しないため生成は1回でよい。
@@ -293,7 +293,7 @@ export default function ReportPreview({ roundData, categories, onBack }: Props) 
       // メール作成画面は title/text が無いと中身ゼロで開いて即閉じるため件名・本文を付ける。
       // AirDrop の転送失敗はファイル名の半角英数化で対処済み。
       navigator.share({
-        title: '感染対策ラウンド報告書',
+        title: 'あおき君 感染対策ラウンド報告書',
         text: `${roundData.inspectorName} - ${new Date().toISOString().slice(0, 10)}`,
         files: [shareFile],
       }).catch((err: unknown) => {
@@ -314,37 +314,42 @@ export default function ReportPreview({ roundData, categories, onBack }: Props) 
   return (
     <div className="min-h-screen bg-base">
       {/* Header */}
-      <div className="sticky top-0 z-10 bg-surface/90 backdrop-blur-lg border-b border-line px-5 py-3.5 flex items-center justify-between">
-        <button onClick={onBack} className="text-text-muted text-sm font-bold hover:text-text transition-colors duration-200 flex items-center gap-1">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-          {theme.backLabel}
-        </button>
-        <button
-          onClick={handleExportDocx}
-          disabled={!shareFile}
-          className="btn-primary px-5 py-2.5 text-sm font-bold flex items-center gap-1.5 disabled:opacity-50"
-        >
-          {canShare ? (
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+      <div className="print-hidden sticky top-0 z-10 bg-surface/90 backdrop-blur-lg border-b border-line px-4 py-3.5">
+        <div className="mx-auto flex max-w-2xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <button onClick={onBack} className="text-text-muted text-sm font-bold hover:text-text transition-colors duration-200 flex items-center gap-1 self-start">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
-          ) : (
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-          )}
-          {!shareFile ? '準備中…' : canShare ? '共有' : 'Word出力'}
-        </button>
+            {theme.backLabel}
+          </button>
+          <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:items-center">
+            <button
+              onClick={handleExportDocx}
+              disabled={!shareFile}
+              className="btn-primary min-w-0 px-3 py-2.5 text-sm font-bold flex items-center justify-center gap-1.5 disabled:opacity-50 sm:px-5"
+            >
+              {canShare ? (
+                <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+              ) : (
+                <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+              )}
+              <span className="truncate">{!shareFile ? '準備中…' : canShare ? '共有' : 'Word出力'}</span>
+            </button>
+            <button type="button" onClick={() => window.print()} className="min-w-0 rounded-xl px-3 py-2.5 text-sm font-bold border-2 border-line text-text-muted hover:text-text hover:border-primary transition-colors sm:px-4">印刷・PDF保存</button>
+          </div>
+        </div>
       </div>
 
       {/* Report preview */}
       <div className="animate-page px-4 py-5 pb-10">
-        <div ref={reportRef} className="card p-5 max-w-2xl mx-auto space-y-6">
+        <div ref={reportRef} className="print-report card p-5 max-w-2xl mx-auto space-y-6">
           {/* Title */}
           <div className="text-center pb-4">
-            <h1 className="text-lg font-extrabold text-text">感染対策ラウンド報告書</h1>
+            <h1 className="text-lg font-extrabold text-text">あおき君 感染対策ラウンド報告書</h1>
             <div className="w-12 h-1 bg-primary rounded-full mx-auto mt-3" />
           </div>
 
@@ -418,7 +423,7 @@ export default function ReportPreview({ roundData, categories, onBack }: Props) 
                 {roundData.checklistResults.filter((r) => r.photos.length > 0).flatMap((result) => {
                   const item = findItemById(categories, result.itemId);
                   return result.photos.map((photo) => (
-                    <div key={photo.id} className="rounded overflow-hidden bg-base border border-line">
+                    <div key={photo.id} className="print-avoid-break rounded overflow-hidden bg-base border border-line">
                       <p className="px-1.5 py-1 text-[9px] font-bold text-primary truncate bg-base-deep">{item?.category}：{item?.description.slice(0, 20)}{item && item.description.length > 20 ? '…' : ''}</p>
                       <img src={photo.dataUrl} alt="" className="w-full aspect-square object-contain bg-base" />
                       {photo.comment && <p className="px-1.5 py-1 text-[9px] text-text-muted line-clamp-2">{photo.comment}</p>}
@@ -426,7 +431,7 @@ export default function ReportPreview({ roundData, categories, onBack }: Props) 
                   ));
                 })}
                 {roundData.generalPhotos.map((photo) => (
-                  <div key={photo.id} className="rounded overflow-hidden bg-base border border-line">
+                  <div key={photo.id} className="print-avoid-break rounded overflow-hidden bg-base border border-line">
                     <img src={photo.dataUrl} alt="" className="w-full aspect-square object-contain bg-base" />
                     {photo.comment && <p className="px-1.5 py-1 text-[9px] text-text-muted line-clamp-2">{photo.comment}</p>}
                   </div>

@@ -2,22 +2,16 @@ import { useState } from 'react';
 import { useTheme } from '../ThemeContext';
 import { themes } from '../themes';
 import type { ThemeName } from '../themes';
-import { useIcon } from '../IconContext';
-import { icons } from '../icons';
-import type { IconName } from '../icons';
 
 const themeOrder: ThemeName[] = ['warm', 'minimal', 'medical'];
-const iconOrder: IconName[] = ['ran', 'meguru'];
-
 const themeColors: Record<ThemeName, { bg: string; accent: string }> = {
   warm: { bg: '#FDF8F5', accent: '#E07A5F' },
   minimal: { bg: '#F8F7F4', accent: '#2D6B5A' },
-  medical: { bg: '#F7F9FC', accent: '#0C6B8A' },
+  medical: { bg: '#F8FBFF', accent: '#5DADE2' },
 };
 
 export default function ThemeSelector() {
   const { themeName, setTheme } = useTheme();
-  const { iconName, setIcon } = useIcon();
   const [open, setOpen] = useState(false);
 
   return (
@@ -92,36 +86,6 @@ export default function ThemeSelector() {
               })}
             </div>
 
-            <p className="text-xs font-bold text-text-muted mt-5 mb-2">アイコン</p>
-            <div className="flex gap-3">
-              {iconOrder.map((name) => {
-                const ic = icons[name];
-                const active = iconName === name;
-                return (
-                  <button
-                    key={name}
-                    onClick={() => { setIcon(name); setOpen(false); }}
-                    className={`flex-1 flex flex-col items-center gap-2 p-3 rounded-2xl border-2 transition-all duration-200 ${
-                      active
-                        ? 'border-primary bg-primary-light'
-                        : 'border-line bg-base hover:border-text-faint'
-                    }`}
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}${ic.file}`}
-                      alt={ic.alt}
-                      className="w-14 h-14 object-contain"
-                    />
-                    <p className="text-xs font-bold text-text">{ic.label}</p>
-                    {active && (
-                      <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
           </div>
         </div>
       )}

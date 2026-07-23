@@ -1,17 +1,17 @@
 {
-  "name": "めぐる君",
-  "short_name": "めぐる君",
-  "description": "病院感染対策ラウンド支援アプリ",
-  "theme_color": "#0C6B8A",
-  "background_color": "#F7F9FC",
+  "name": "あおき君",
+  "short_name": "あおき君",
+  "description": "院内感染ラウンドを、もっとやさしく、たのしく。チェックリスト、写真、総評、Word報告書を端末内で扱う試作アプリ。",
+  "theme_color": "#E76F51",
+  "background_color": "#FFF8F6",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
   "icons": [
     {
-      "src": "meguru.png",
+      "src": "aokikun-icon.svg",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ]

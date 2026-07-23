@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useIcon } from '../IconContext';
 import { usePwaInstall } from '../usePwaInstall';
-import { trackEvent } from '../analytics';
 
 export default function InstallBanner() {
   const { canShowBanner, method, dismiss, promptInstall } = usePwaInstall();
@@ -11,10 +10,8 @@ export default function InstallBanner() {
   if (!canShowBanner) return null;
 
   const handleClick = async () => {
-    trackEvent('pwa_install_banner_click', { method });
     if (method === 'prompt') {
       const outcome = await promptInstall();
-      trackEvent('pwa_install_prompt_result', { outcome });
       if (outcome === 'accepted') dismiss();
     } else {
       setShowIosGuide(true);
@@ -22,7 +19,6 @@ export default function InstallBanner() {
   };
 
   const handleDismiss = () => {
-    trackEvent('pwa_install_banner_dismiss', { method });
     dismiss();
   };
 
@@ -30,7 +26,7 @@ export default function InstallBanner() {
     <>
       <div className="card p-4 mt-4 flex items-center gap-3">
         <img
-          src={`${import.meta.env.BASE_URL}${icon.file}`}
+          src={icon.file}
           alt=""
           className="w-10 h-10 object-contain flex-shrink-0"
         />

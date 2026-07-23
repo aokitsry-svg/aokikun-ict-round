@@ -20,30 +20,30 @@
 
 /* ===== Theme: Warm (default) ===== */
 :root, [data-theme="warm"] {
-  --t-font: 'Nunito', 'M PLUS Rounded 1c', sans-serif;
-  --t-base: #FDF8F5;
-  --t-base-deep: #F5EBE6;
+  --t-font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --t-base: #FFF8F6;
+  --t-base-deep: #FCEBE5;
   --t-surface: #FFFFFF;
-  --t-primary: #E07A5F;
-  --t-primary-light: #FFF0EB;
-  --t-primary-dark: #C4634B;
+  --t-primary: #E76F51;
+  --t-primary-light: #FFEDE7;
+  --t-primary-dark: #C95A3F;
   --t-text: #3D3332;
   --t-text-muted: #9B8A87;
   --t-text-faint: #C9BBB8;
   --t-line: #F0E6E2;
   --t-danger: #D96B6B;
   --t-danger-light: #FDF0F0;
-  --t-ok: #6BA38A;
-  --t-ok-light: #EDF7F1;
+  --t-ok: #4CAF8F;
+  --t-ok-light: #EAF8F1;
   --t-card-shadow: 0 2px 8px rgba(61,51,50,0.06);
-  --t-btn-glow: 0 4px 12px rgba(224,122,95,0.25);
+  --t-btn-glow: 0 4px 12px rgba(231,111,81,0.25);
   --t-radius: 16px;
   --t-radius-lg: 24px;
 }
 
 /* ===== Theme: Minimal ===== */
 [data-theme="minimal"] {
-  --t-font: 'Outfit', 'Zen Kaku Gothic New', sans-serif;
+  --t-font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --t-base: #F8F7F4;
   --t-base-deep: #EFEEE9;
   --t-surface: #FFFFFF;
@@ -66,13 +66,13 @@
 
 /* ===== Theme: Medical ===== */
 [data-theme="medical"] {
-  --t-font: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  --t-font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --t-base: #F7F9FC;
   --t-base-deep: #EDF1F7;
   --t-surface: #FFFFFF;
-  --t-primary: #0C6B8A;
-  --t-primary-light: #E8F4F8;
-  --t-primary-dark: #085570;
+  --t-primary: #5DADE2;
+  --t-primary-light: #EAF6FF;
+  --t-primary-dark: #2E86C1;
   --t-text: #1E293B;
   --t-text-muted: #64748B;
   --t-text-faint: #94A3B8;
@@ -199,4 +199,13 @@ input:focus, textarea:focus {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+
+@media print {
+  @page { size: A4 portrait; margin: 12mm; }
+  body { background: #fff !important; }
+  .print-hidden { display: none !important; }
+  .print-report { box-shadow: none !important; border-radius: 0 !important; max-width: none !important; }
+  .print-avoid-break { break-inside: avoid; page-break-inside: avoid; }
 }
