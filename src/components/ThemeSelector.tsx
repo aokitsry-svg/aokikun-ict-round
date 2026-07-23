@@ -7,12 +7,12 @@ import { icons } from '../icons';
 import type { IconName } from '../icons';
 
 const themeOrder: ThemeName[] = ['warm', 'minimal', 'medical'];
-const iconOrder: IconName[] = ['ran', 'meguru'];
+const iconOrder: IconName[] = ['aokikun'];
 
 const themeColors: Record<ThemeName, { bg: string; accent: string }> = {
   warm: { bg: '#FDF8F5', accent: '#E07A5F' },
   minimal: { bg: '#F8F7F4', accent: '#2D6B5A' },
-  medical: { bg: '#F7F9FC', accent: '#0C6B8A' },
+  medical: { bg: '#F8FBFF', accent: '#5DADE2' },
 };
 
 export default function ThemeSelector() {
@@ -108,7 +108,7 @@ export default function ThemeSelector() {
                     }`}
                   >
                     <img
-                      src={`${import.meta.env.BASE_URL}${ic.file}`}
+                      src={ic.file}
                       alt={ic.alt}
                       className="w-14 h-14 object-contain"
                     />

@@ -64,9 +64,9 @@ export default function MainScreen({
       {/* Sticky header */}
       <div className="sticky top-0 z-10 bg-surface/90 backdrop-blur-lg border-b border-line px-4 py-3">
         <div className="flex items-center gap-3">
-          <img src={`${import.meta.env.BASE_URL}${icon.file}`} alt={icon.alt} className="w-9 h-9 object-contain flex-shrink-0" />
+          <img src={icon.file} alt={icon.alt} className="w-12 h-9 object-contain flex-shrink-0" />
           <div className="flex-1 min-w-0">
-            <h1 className="text-sm font-bold text-text leading-tight">感染対策ラウンド</h1>
+            <h1 className="text-sm font-bold text-text leading-tight">あおき君 感染対策ラウンド</h1>
             {editingInspector ? (
               <input
                 type="text"

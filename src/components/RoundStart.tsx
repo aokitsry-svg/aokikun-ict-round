@@ -58,13 +58,14 @@ export default function RoundStart({
       <div className="animate-page w-full max-w-sm">
         {/* Icon */}
         <div className="flex items-center justify-center mb-8">
-          <img src={`${import.meta.env.BASE_URL}${icon.file}`} alt={icon.alt} className="w-40 h-40 object-contain drop-shadow-md" />
+          <img src={icon.file} alt={icon.alt} className="w-52 max-h-36 object-contain drop-shadow-md" />
         </div>
 
         {/* Title */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-extrabold text-text">{theme.startTitle}</h1>
-          <p className="text-text-muted text-sm mt-2 leading-relaxed whitespace-pre-line">{theme.startSubtitle}</p>
+          <h1 className="text-2xl font-extrabold text-text">あおき君</h1>
+          <p className="text-text-muted text-sm mt-2 leading-relaxed whitespace-pre-line">院内感染ラウンドを、もっとやさしく、たのしく。
+{theme.startSubtitle}</p>
         </div>
 
         {/* Checklist selector */}
@@ -186,7 +187,7 @@ export default function RoundStart({
 
         <InstallBanner />
 
-        <p className="text-center text-text-faint text-xs mt-10">ICTラウンドアプリ「{icon.label}」 v{__APP_VERSION__} (build {__BUILD_DATE__})</p>
+        <p className="text-center text-text-faint text-xs mt-10">院内感染ラウンド支援アプリ「{icon.label}」 v{__APP_VERSION__} (build {__BUILD_DATE__})</p>
       </div>
 
       {showImport && (
