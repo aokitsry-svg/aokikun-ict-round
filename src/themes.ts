@@ -31,9 +31,9 @@ export const themes: Record<ThemeName, ThemeConfig> = {
     startTitle: 'お疲れ様です',
     startSubtitle: 'ラウンドを開始するには担当者名を入力してください',
     backLabel: '戻る',
-    listeningLabel: '音声認識中...',
+    listeningLabel: '入力中...',
     photoOkLabel: '撮影済み',
-    commentPlaceholder: '音声入力またはテキスト入力...',
+    commentPlaceholder: '気になった点をメモ...',
   },
   medical: {
     name: 'medical',
@@ -42,9 +42,9 @@ export const themes: Record<ThemeName, ThemeConfig> = {
     startTitle: 'お疲れ様です',
     startSubtitle: 'ラウンドを開始するには担当者名を入力してください',
     backLabel: '戻る',
-    listeningLabel: '音声認識中...',
+    listeningLabel: '入力中...',
     photoOkLabel: '撮影済み',
-    commentPlaceholder: '音声入力またはテキスト入力...',
+    commentPlaceholder: '気になった点をメモ...',
   },
 };
 
@@ -55,7 +55,7 @@ export function loadTheme(): ThemeName {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved && saved in themes) return saved as ThemeName;
   } catch { /* ignore */ }
-  return 'medical';
+  return 'warm';
 }
 
 export function saveTheme(name: ThemeName) {

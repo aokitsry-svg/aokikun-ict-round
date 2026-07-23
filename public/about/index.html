@@ -1,349 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YYCY51HV7R"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-YYCY51HV7R');
-  </script>
-  <title>めぐる君 — ICTラウンドをデジタル化</title>
-  <meta name="description" content="めぐる君はICN感染対策ラウンドを支援するWebアプリ。チェックリストで記録し、写真を添付し、そのままWord報告書に出力。データは端末内のみで外部送信ゼロ。登録不要・無料で今すぐ使えます。">
-  <link rel="canonical" href="https://ict-round.conect.llc/about">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="めぐる君 — ICTラウンドをデジタル化">
-  <meta property="og:description" content="めぐる君はICN感染対策ラウンドを支援するWebアプリ。チェックリストで記録し、写真を添付し、そのままWord報告書に出力。データは端末内のみで外部送信ゼロ。">
-  <meta property="og:url" content="https://ict-round.conect.llc/about">
-  <meta property="og:image" content="https://ict-round.conect.llc/about/meguru.png">
-  <meta property="og:site_name" content="めぐる君">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="めぐる君 — ICTラウンドをデジタル化">
-  <meta name="twitter:description" content="めぐる君はICN感染対策ラウンドを支援するWebアプリ。チェックリストで記録し、写真を添付し、そのままWord報告書に出力。データは端末内のみで外部送信ゼロ。">
-  <meta name="twitter:image" content="https://ict-round.conect.llc/about/meguru.png">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>あおき君 — 院内感染ラウンド支援アプリ</title>
+  <meta name="description" content="あおき君は、チェックリスト、写真、総評、Word報告書で院内感染ラウンドを支援する端末内保存の試作Webアプリです。">
+  <meta property="og:title" content="あおき君 — 院内感染ラウンド支援アプリ">
+  <meta property="og:description" content="院内感染ラウンドを、もっとやさしく、たのしく。">
+  <meta property="og:site_name" content="あおき君">
+  <meta name="theme-color" content="#E76F51">
+  <link rel="icon" href="../aokikun-icon.svg" type="image/svg+xml">
   <style>
-    body { font-family: 'Noto Sans JP', sans-serif; }
-    .gradient-hero { background: linear-gradient(135deg, #0f4c81 0%, #1a73c8 50%, #0ea5e9 100%); }
-    .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
-    .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 700; }
+    :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#2f2f2f;background:#fff8f6}body{margin:0}.hero{background:linear-gradient(135deg,#e76f51,#f4a261);color:white;padding:56px 20px;text-align:center}.logo-mark{width:112px;height:112px;margin:0 auto 16px;border-radius:32px;background:#fff;color:#e76f51;display:grid;place-items:center;font-size:72px;font-weight:900;box-shadow:0 12px 24px rgba(0,0,0,.18)}.wrap{max-width:960px;margin:0 auto;padding:36px 20px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card{background:white;border:1px solid #f3d8cf;border-radius:20px;padding:20px;box-shadow:0 6px 18px rgba(70,45,35,.06)}.badge{display:inline-block;background:#eaf6ff;color:#2e86c1;border-radius:999px;padding:6px 12px;font-weight:700;font-size:13px}.btn{display:inline-block;background:#e76f51;color:white;text-decoration:none;border-radius:999px;padding:14px 24px;font-weight:800}.note{background:#eaf8f1;border-left:5px solid #4caf8f;padding:16px;border-radius:14px;line-height:1.8}li{margin:.5em 0}footer{text-align:center;color:#8b7770;padding:24px}
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-
-  <!-- Hero -->
-  <section class="gradient-hero text-white py-16 px-6">
-    <div class="max-w-3xl mx-auto text-center">
-      <div class="flex justify-center mb-5">
-        <img src="meguru.png" alt="めぐる君"
-             width="128" height="128"
-             class="w-32 h-32 rounded-full shadow-xl ring-4 ring-white/40">
-      </div>
-      <h1 class="text-5xl font-black mb-3 tracking-tight">めぐる君</h1>
-      <p class="text-xl font-medium text-blue-100 mb-2">ICN感染対策ラウンド支援アプリ</p>
-      <p class="text-base text-blue-200 mb-8 max-w-xl mx-auto">
-        チェックリストで記録・写真を添付・そのままWord報告書に出力。<br>
-        ブラウザだけで動くから、情報が外部に漏れません。
-      </p>
-
-      <!-- CTA + QR -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-8">
-        <a href="https://ict-round.conect.llc/"
-           target="_blank"
-           class="bg-white text-blue-700 font-bold px-8 py-4 rounded-xl text-lg shadow-lg hover:bg-blue-50 transition">
-          ▶ 今すぐ使ってみる
-        </a>
-        <div class="flex flex-col items-center gap-2">
-          <div class="bg-white rounded-xl p-3 shadow-lg">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://ict-round.conect.llc/&color=0f4c81"
-                 alt="QRコード" width="120" height="120" class="block">
-          </div>
-          <p class="text-blue-200 text-xs">スマホでスキャンして即利用</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 安心ポイント バナー -->
-  <div class="bg-emerald-600 text-white text-center py-3 px-4">
-    <p class="text-sm font-bold">🔒 データはすべてお使いの端末内に保存 — 外部サーバーへの送信ゼロ。病院のIT規程にも安心。</p>
-  </div>
-
-  <!-- マンガ -->
-  <section class="py-10 px-6 max-w-2xl mx-auto">
-    <img src="manga.jpeg" alt="感染対策ラウンドの救世主？" class="w-full rounded-2xl shadow-sm">
-  </section>
-
-  <!-- 機能 -->
-  <section class="py-14 px-6 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-black text-center text-gray-900 mb-2">主な機能</h2>
-    <p class="text-center text-gray-500 mb-10 text-sm">現場のラウンドをそのままデジタルに</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-        <div class="text-3xl mb-3">✅</div>
-        <h3 class="font-bold text-lg mb-1">A / B / C 評価チェックリスト</h3>
-        <p class="text-gray-500 text-sm">CSV・Excelからチェックリストを取り込み可能。施設ごとにカスタマイズして使えます。</p>
-      </div>
-
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-        <div class="text-3xl mb-3">📸</div>
-        <h3 class="font-bold text-lg mb-1">写真の追加・管理</h3>
-        <p class="text-gray-500 text-sm">ラウンド中に気になった箇所をその場で撮影。指摘内容に紐づけて記録できます。</p>
-      </div>
-
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-        <div class="text-3xl mb-3">🎤</div>
-        <h3 class="font-bold text-lg mb-1">音声入力対応の総評</h3>
-        <p class="text-gray-500 text-sm">デバイスの音声入力機能を使って、歩きながらでも入力可能。忙しいラウンド中の記録負担を軽減します。</p>
-      </div>
-
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-        <div class="text-3xl mb-3">📄</div>
-        <h3 class="font-bold text-lg mb-1">Word形式でレポート出力</h3>
-        <p class="text-gray-500 text-sm">ラウンド終了後、ワンクリックでWord報告書を生成。そのままメールでPCに送信できます。</p>
-      </div>
-
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-        <div class="text-3xl mb-3">💾</div>
-        <h3 class="font-bold text-lg mb-1">ローカル保存と再開</h3>
-        <p class="text-gray-500 text-sm">入力途中でも保存してあとで再開できます。途中退席があっても安心。</p>
-      </div>
-
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-        <div class="text-3xl mb-3">📱</div>
-        <h3 class="font-bold text-lg mb-1">PWA対応・インストール不要</h3>
-        <p class="text-gray-500 text-sm">スマホ・タブレットのホーム画面に追加するだけ。App Storeの申請審査なしで即利用。</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 使い始め方 -->
-  <section class="py-14 px-6 max-w-3xl mx-auto">
-    <h2 class="text-2xl font-black text-center text-gray-900 mb-10">めぐる君の始め方</h2>
-    <div class="flex flex-col gap-4">
-      <div class="flex items-start gap-4 bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-        <div class="flex-shrink-0 w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-sm">1</div>
-        <div>
-          <p class="font-bold">QRコードをスキャン or URLにアクセス</p>
-          <p class="text-gray-500 text-sm mt-0.5">スマホ・タブレット・PCどれでもOK。インストール不要。</p>
-        </div>
-      </div>
-      <div class="flex items-start gap-4 bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-        <div class="flex-shrink-0 w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-sm">2</div>
-        <div>
-          <p class="font-bold">チェックリストを設定</p>
-          <p class="text-gray-500 text-sm mt-0.5">既存のCSV/Excelから取り込むか、画面上で直接作成できます。</p>
-        </div>
-      </div>
-      <div class="flex items-start gap-4 bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-        <div class="flex-shrink-0 w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-sm">3</div>
-        <div>
-          <p class="font-bold">ラウンドしながら記録・写真撮影</p>
-          <p class="text-gray-500 text-sm mt-0.5">タップするだけのシンプル操作。歩きながら使えます。</p>
-        </div>
-      </div>
-      <div class="flex items-start gap-4 bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-        <div class="flex-shrink-0 w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-sm">4</div>
-        <div>
-          <p class="font-bold">Wordで報告書を出力・提出</p>
-          <p class="text-gray-500 text-sm mt-0.5">ラウンド終了後すぐにWord報告書を生成できます。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ホーム画面に追加する方法 -->
-  <section class="py-14 px-6 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-black text-center text-gray-900 mb-2">スマホのホーム画面に追加する方法</h2>
-    <p class="text-center text-gray-500 mb-10 text-sm">
-      一度ホーム画面に追加すれば、次からはアイコンをタップするだけ。アプリのように全画面で使えます（インストール審査・容量の心配はありません）。
-    </p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-        <span class="badge bg-blue-50 text-blue-700 border border-blue-200 mb-4">📲 iPhone / iPad（Safari）</span>
-        <div class="flex flex-col gap-3">
-          <div class="flex items-start gap-3">
-            <div class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xs">1</div>
-            <p class="text-sm text-gray-700"><span class="font-bold">Safari</span> でめぐる君のページを開く</p>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xs">2</div>
-            <p class="text-sm text-gray-700">画面右下の<span class="font-bold">「•••」（三点リーダー）ボタン</span>をタップ</p>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xs">3</div>
-            <p class="text-sm text-gray-700">表示されたメニューの中の<span class="font-bold">共有ボタン</span>（□に↑のマーク）をタップ</p>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xs">4</div>
-            <p class="text-sm text-gray-700">メニューを下にスクロールし、<span class="font-bold">「ホーム画面に追加」</span>をタップ</p>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xs">5</div>
-            <p class="text-sm text-gray-700">右上の<span class="font-bold">「追加」</span>をタップ → 完了</p>
-          </div>
-        </div>
-        <p class="text-gray-400 text-xs mt-4">※ Chrome等ではこのメニューが出ないため、必ず Safari で開いてください。</p>
-      </div>
-
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-        <span class="badge bg-blue-50 text-blue-700 border border-blue-200 mb-4">📲 Android（Chrome）</span>
-        <div class="flex flex-col gap-3">
-          <div class="flex items-start gap-3">
-            <div class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xs">1</div>
-            <p class="text-sm text-gray-700"><span class="font-bold">Chrome</span> でめぐる君のページを開く</p>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xs">2</div>
-            <p class="text-sm text-gray-700">右上の<span class="font-bold">︙（メニュー）</span>をタップ</p>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xs">3</div>
-            <p class="text-sm text-gray-700"><span class="font-bold">「ホーム画面に追加」</span>または<span class="font-bold">「アプリをインストール」</span>をタップ</p>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-xs">4</div>
-            <p class="text-sm text-gray-700"><span class="font-bold">「追加」</span>をタップ → 完了</p>
-          </div>
-        </div>
-        <p class="text-gray-400 text-xs mt-4">※ 機種により表示名が「アプリをインストール」の場合があります。</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 最新のアップデート -->
-  <section class="py-14 px-6 max-w-2xl mx-auto">
-    <h2 class="text-2xl font-black text-center text-gray-900 mb-8">最新のアップデート</h2>
-    <div id="release-list" class="flex flex-col gap-4"></div>
-    <p class="text-center mt-6">
-      <a href="../updates/" class="text-blue-600 font-bold hover:underline text-sm">更新履歴をすべて見る →</a>
-    </p>
-  </section>
-
-  <!-- 開発者 -->
-  <section class="bg-white border-t border-b border-gray-100 py-12 px-6">
-    <div class="max-w-3xl mx-auto flex flex-col gap-8">
-      <div class="flex flex-col sm:flex-row items-center gap-8">
-        <img src="yamaguchi.jpg" alt="山口 征啓" class="flex-shrink-0 w-20 h-20 rounded-full object-cover" />
-        <div>
-          <p class="text-xs text-blue-600 font-bold uppercase tracking-widest mb-1">Developer</p>
-          <h3 class="text-xl font-black mb-1">山口 征啓（やまぐち ゆきひろ）</h3>
-          <div class="flex flex-wrap gap-2 mb-3">
-            <span class="badge bg-blue-50 text-blue-700 border border-blue-200">感染症専門医・指導医</span>
-            <span class="badge bg-blue-50 text-blue-700 border border-blue-200">ICD</span>
-            <span class="badge bg-blue-50 text-blue-700 border border-blue-200">コネクト合同会社 CEO</span>
-            <span class="badge bg-blue-50 text-blue-700 border border-blue-200">KRICT</span>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col sm:flex-row items-center gap-8">
-        <img src="tanaka.jpg" alt="田中 裕之" class="flex-shrink-0 w-20 h-20 rounded-full object-cover" />
-        <div>
-          <p class="text-xs text-blue-600 font-bold uppercase tracking-widest mb-1">Co-Developer</p>
-          <h3 class="text-xl font-black mb-1">田中 裕之（たなか ひろゆき）</h3>
-          <div class="flex flex-wrap gap-2 mb-3">
-            <span class="badge bg-blue-50 text-blue-700 border border-blue-200">ICN</span>
-            <span class="badge bg-blue-50 text-blue-700 border border-blue-200">北九州市立医療センター</span>
-            <span class="badge bg-blue-50 text-blue-700 border border-blue-200">KRICT</span>
-          </div>
-        </div>
-      </div>
-      <p class="text-gray-500 text-sm">
-        現場で感じた「ラウンドのデジタル化ニーズ」に応えるため、ICDとICNで共同開発。
-        実際の病院でのICTラウンド経験をもとに、使いやすさを追求しました。
-      </p>
-    </div>
-  </section>
-
-  <!-- お問い合わせ -->
-  <section class="py-14 px-6 max-w-2xl mx-auto text-center">
-    <h2 class="text-2xl font-black text-gray-900 mb-2">お問い合わせ・ご意見</h2>
-    <p class="text-gray-500 mb-8 text-sm">
-      使ってみた感想・ご要望・不具合のご報告をお待ちしています。今後の改良の参考にさせていただきます。<br>
-      （アプリ内で入力したデータが送信されることはありません）
-    </p>
-    <a href="https://forms.gle/idcb12fFk1GT2wHR7" target="_blank" rel="noopener"
-       class="inline-block bg-blue-600 text-white font-bold px-8 py-4 rounded-xl text-lg shadow-lg hover:bg-blue-700 transition">
-      ✉ ご意見・お問い合わせフォーム
-    </a>
-  </section>
-
-  <!-- ユーザー会募集 -->
-  <section class="py-14 px-6 max-w-2xl mx-auto">
-    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-8 text-center">
-      <h2 class="text-2xl font-black text-gray-900 mb-2">めぐる君を一緒に育てませんか？</h2>
-      <p class="text-gray-600 mb-6 text-sm leading-relaxed">
-        めぐる君の改良アイデアや「現場でこんなアプリがほしい」を出し合う、
-        少人数のユーザー会（LINEグループ・招待制）を始めます。<br>
-        感染対策の現場の声で、次の機能・次のアプリを一緒に作りましょう。
-      </p>
-      <a href="https://forms.gle/idcb12fFk1GT2wHR7" target="_blank" rel="noopener"
-         class="inline-block bg-blue-600 text-white font-bold px-8 py-4 rounded-xl text-lg shadow-lg hover:bg-blue-700 transition">
-        🤝 ユーザー会に参加希望
-      </a>
-      <p class="text-gray-500 text-xs mt-4">フォームで「ユーザー会に参加希望」を選んで送信してください。折り返し招待のご案内をお送りします。</p>
-    </div>
-  </section>
-
-  <!-- 最終CTA -->
-  <section class="gradient-hero text-white py-14 px-6 text-center">
-    <h2 class="text-2xl font-black mb-2">まずは試してみてください</h2>
-    <p class="text-blue-200 mb-8 text-sm">登録不要・無料・データは端末内のみ</p>
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-      <a href="https://ict-round.conect.llc/"
-         target="_blank"
-         class="bg-white text-blue-700 font-bold px-10 py-4 rounded-xl text-lg shadow-lg hover:bg-blue-50 transition">
-        ▶ 今すぐ使う
-      </a>
-      <div class="flex flex-col items-center gap-2">
-        <div class="bg-white rounded-xl p-3">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://ict-round.conect.llc/&color=0f4c81"
-               alt="QRコード" width="100" height="100" class="block">
-        </div>
-        <p class="text-blue-200 text-xs">スマホでスキャン</p>
-      </div>
-    </div>
-    <p class="mt-10 text-blue-300 text-xs">
-      © 2026 コネクト合同会社 —
-      <a href="https://github.com/yukihiroyamaguchi569/ict-round" class="underline hover:text-white" target="_blank">GitHub</a>
-    </p>
-  </section>
-
-  <script>
-    const escapeHTML = (str) => str.replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
-
-    fetch('/updates/releases.json')
-      .then((res) => {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
-      })
-      .then((releases) => {
-        const list = document.getElementById('release-list');
-        list.innerHTML = releases.slice(0, 3).map((release) => `
-          <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="badge bg-blue-50 text-blue-700 border border-blue-200">v${escapeHTML(release.version)}</span>
-              <span class="text-gray-400 text-xs">${escapeHTML(release.date)}</span>
-            </div>
-            <ul class="list-disc list-inside text-sm text-gray-700 flex flex-col gap-1">
-              ${release.changes.map((change) => `<li>${escapeHTML(change)}</li>`).join('')}
-            </ul>
-          </div>
-        `).join('');
-      })
-      .catch((error) => {
-        console.error('Failed to load latest releases:', error);
-      });
-  </script>
-
+<body>
+  <header class="hero">
+    <div class="logo-mark" aria-hidden="true">あ</div>
+    <h1>あおき君</h1>
+    <p>院内感染ラウンドを、もっとやさしく、たのしく。</p>
+    <p><span class="badge">院内感染ラウンド支援アプリ</span></p>
+    <p><a class="btn" href="../">アプリを開く</a></p>
+  </header>
+  <main class="wrap">
+    <section class="grid">
+      <div class="card"><h2>チェックリスト</h2><p>A/B/C評価で観察項目をシンプルに記録できます。</p></div>
+      <div class="card"><h2>写真とコメント</h2><p>項目紐付き写真と一般写真を追加し、コメントを残せます。</p></div>
+      <div class="card"><h2>Word報告書</h2><p>入力内容をプレビューし、.docx報告書として保存・共有できます。</p></div>
+      <div class="card"><h2>端末内保存・PWA</h2><p>データはブラウザの端末内保存を利用します。ホーム画面追加にも対応します。</p></div>
+    </section>
+    <section class="card" style="margin-top:24px"><h2>使い方4ステップ</h2><ol><li>担当者名と部署名を入力してラウンド開始。</li><li>チェックリストをA/B/Cで評価。</li><li>必要な写真とコメント、総評を追加。</li><li>レポートを確認してWord出力。必要に応じて印刷・PDF保存。</li></ol></section>
+    <section class="note" style="margin-top:24px"><strong>注記:</strong> あおき君は個人制作の試作であり、正式な医療情報システムではありません。クラウド同期、認証、監査ログは備えていません。ブラウザデータを消去すると保存済みラウンドも失われる場合があります。</section>
+  </main>
+  <footer>© 2026 あおき君 Phase 1 / Apache License 2.0 派生試作</footer>
 </body>
 </html>
