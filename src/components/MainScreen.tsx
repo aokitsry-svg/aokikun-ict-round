@@ -147,6 +147,7 @@ export default function MainScreen({
             categories={categories}
             checklistResults={roundData.checklistResults}
             onRatingChange={onRatingChange}
+            onAddPhoto={(itemId) => onAddPhoto(itemId)}
           />
         )}
         {activeTab === 'photos' && (
