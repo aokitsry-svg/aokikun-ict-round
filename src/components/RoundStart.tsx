@@ -62,8 +62,13 @@ export default function RoundStart({
         </div>
 
         {/* Guidance */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-5">
           <p className="text-text-muted text-sm leading-relaxed whitespace-pre-line">{theme.startSubtitle}</p>
+        </div>
+
+        <div className="mb-4 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-left text-xs leading-relaxed text-amber-900">
+          <p className="font-bold">公開デモ版です</p>
+          <p className="mt-1">実在する患者名、顔写真、診療情報、院内機密などは入力せず、架空のテストデータだけでお試しください。</p>
         </div>
 
         {/* Checklist selector */}
