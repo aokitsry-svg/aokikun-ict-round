@@ -7,9 +7,10 @@ interface Props {
   categories: ChecklistCategory[];
   checklistResults: ChecklistItemResult[];
   onRatingChange: (itemId: string, rating: Rating) => void;
+  onAddPhoto: (itemId: string) => void;
 }
 
-export default function ChecklistTab({ categories, checklistResults, onRatingChange }: Props) {
+export default function ChecklistTab({ categories, checklistResults, onRatingChange, onAddPhoto }: Props) {
   const totalItems = useMemo(() => getTotalItems(categories), [categories]);
   const ratedCount = checklistResults.filter((r) => r.rating !== null).length;
   const progress = Math.round((ratedCount / totalItems) * 100);
@@ -40,6 +41,7 @@ export default function ChecklistTab({ categories, checklistResults, onRatingCha
           category={cat}
           results={checklistResults}
           onRatingChange={onRatingChange}
+          onAddPhoto={onAddPhoto}
           defaultOpen={idx === 0}
         />
       ))}
