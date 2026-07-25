@@ -1,0 +1,33 @@
+{
+  "name": "aoki-video-factory",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Codex + Remotion video production workspace with YouTube reference analysis",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "lint": "eslint src && tsc",
+    "lint:scripts": "node --check scripts/analyze-youtube.mjs && bash -n scripts/bootstrap.sh",
+    "render:horizontal": "remotion render src/index.ts StarterHorizontal out/starter-horizontal.mp4 --codec=h264",
+    "render:vertical": "remotion render src/index.ts StarterVertical out/starter-vertical.mp4 --codec=h264",
+    "render:all": "npm run render:horizontal && npm run render:vertical",
+    "analyze:youtube": "node scripts/analyze-youtube.mjs",
+    "skills:install": "npx -y skills@latest add remotion-dev/skills -y",
+    "bootstrap": "bash scripts/bootstrap.sh",
+    "check": "npm run lint && npm run lint:scripts && npm run render:horizontal"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.498",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.498"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.498",
+    "@types/node": "24.12.0",
+    "@types/react": "19.2.7",
+    "eslint": "9.19.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  }
+}

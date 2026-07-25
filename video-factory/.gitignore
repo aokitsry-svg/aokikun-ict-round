@@ -1,0 +1,7 @@
+node_modules/
+out/
+references/*
+!references/.gitkeep
+style-profiles/*.draft.md
+.DS_Store
+*.log
