@@ -18,7 +18,7 @@ const points = [
 
 export const StarterVideo = ({format}: StarterVideoProps) => {
   const frame = useCurrentFrame();
-  const {fps, width, height} = useVideoConfig();
+  const {fps, width} = useVideoConfig();
   const vertical = format === "vertical";
 
   const titleProgress = spring({
