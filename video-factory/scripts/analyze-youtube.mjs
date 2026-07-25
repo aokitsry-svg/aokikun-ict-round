@@ -61,6 +61,16 @@ const name = rawName
   .replace(/^-+|-+$/g, "") || `reference-${Date.now()}`;
 
 const root = process.cwd();
+const localToolDir = path.join(root, ".tools", "bin");
+const resolveTool = (name) => {
+  const executable = process.platform === "win32" ? `${name}.exe` : name;
+  const localTool = path.join(localToolDir, executable);
+  return existsSync(localTool) ? localTool : name;
+};
+
+const ytDlp = resolveTool("yt-dlp");
+const ffmpeg = resolveTool("ffmpeg");
+const ffprobe = resolveTool("ffprobe");
 const referenceDir = path.join(root, "references", name);
 const periodicDir = path.join(referenceDir, "frames-periodic");
 const sceneDir = path.join(referenceDir, "frames-scenes");
@@ -68,9 +78,7 @@ mkdirSync(periodicDir, {recursive: true});
 mkdirSync(sceneDir, {recursive: true});
 
 try {
-  run("python3", [
-    "-m",
-    "yt_dlp",
+  run(ytDlp, [
     "--no-playlist",
     "--write-info-json",
     "--write-thumbnail",
@@ -103,7 +111,7 @@ if (!sourceVideo || !existsSync(sourceVideo)) {
 
 try {
   const probe = execFileSync(
-    "ffprobe",
+    ffprobe,
     [
       "-v",
       "error",
@@ -117,7 +125,7 @@ try {
   );
   writeFileSync(path.join(referenceDir, "media-probe.json"), probe);
 
-  run("ffmpeg", [
+  run(ffmpeg, [
     "-y",
     "-i",
     sourceVideo,
@@ -128,7 +136,7 @@ try {
     path.join(periodicDir, "frame-%04d.jpg"),
   ]);
 
-  run("ffmpeg", [
+  run(ffmpeg, [
     "-y",
     "-i",
     sourceVideo,
@@ -141,7 +149,7 @@ try {
     path.join(sceneDir, "scene-%04d.jpg"),
   ]);
 
-  run("ffmpeg", [
+  run(ffmpeg, [
     "-y",
     "-i",
     sourceVideo,
