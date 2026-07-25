@@ -1,0 +1,45 @@
+name: Check Remotion video factory
+
+on:
+  pull_request:
+    paths:
+      - "video-factory/**"
+      - ".agents/skills/remotion-youtube-reference/**"
+      - ".github/workflows/video-factory-check.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render-starter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: video-factory
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Verify source and scripts
+        run: npm run lint && npm run lint:scripts
+
+      - name: Render starter video
+        run: npm run render:horizontal
+
+      - name: Upload starter MP4
+        uses: actions/upload-artifact@v4
+        with:
+          name: remotion-starter-horizontal
+          path: video-factory/out/starter-horizontal.mp4
+          if-no-files-found: error
