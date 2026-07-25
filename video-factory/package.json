@@ -6,14 +6,15 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "remotion studio src/index.ts",
-    "lint": "eslint src scripts && tsc",
+    "lint": "eslint src && tsc",
+    "lint:scripts": "node --check scripts/analyze-youtube.mjs && bash -n scripts/bootstrap.sh",
     "render:horizontal": "remotion render src/index.ts StarterHorizontal out/starter-horizontal.mp4 --codec=h264",
     "render:vertical": "remotion render src/index.ts StarterVertical out/starter-vertical.mp4 --codec=h264",
     "render:all": "npm run render:horizontal && npm run render:vertical",
     "analyze:youtube": "node scripts/analyze-youtube.mjs",
     "skills:install": "npx -y skills@latest add remotion-dev/skills -y",
     "bootstrap": "bash scripts/bootstrap.sh",
-    "check": "npm run lint && npm run render:horizontal"
+    "check": "npm run lint && npm run lint:scripts && npm run render:horizontal"
   },
   "dependencies": {
     "@remotion/cli": "4.0.498",
