@@ -46,7 +46,7 @@ export const StarterVideo = ({format}: StarterVideoProps) => {
           "radial-gradient(circle at 15% 10%, #e9f7f4 0%, #f7fbfa 38%, #ffffff 75%)",
         color: "#153b36",
         fontFamily:
-          'Inter, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif',
+          '"Noto Sans CJK JP", "Noto Sans JP", Inter, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif',
         padding: vertical ? "130px 60px" : "100px 90px",
       }}
     >
